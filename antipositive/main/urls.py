@@ -4,6 +4,7 @@ from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('', views.home, name='home'),
+    path('upload_file/', views.upload, name='upload'),
     path('signup/', views.signup, name='signup'),
     path('login/', views.user_login, name='login'),  # Custom login view
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),  # Django's built-in logout view

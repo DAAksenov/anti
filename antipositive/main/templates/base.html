@@ -6,6 +6,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Your Website Title{% endblock %}</title>
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 50vh;
+        }
+
+        .btn {
+            padding: 30px 60px;
+            font-size: 30px;
+        }
+    </style>
     <!-- Add your CSS and JavaScript links here -->
 </head>
 
@@ -19,8 +32,10 @@
     </header>
 
     <main>
+        <div class="container">
         {% block content %}
         {% endblock %}
+        </div>
     </main>
 
     <footer>

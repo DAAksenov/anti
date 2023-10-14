@@ -1,5 +1,32 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
-  <h2>Welcome to Django App</h2>
+<head>
+    <title>Моя страница</title>
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 50vh;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            font-size: 20px;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="{% url 'upload' %}"><button class="btn" type="button">Обучить модель</button></a>
+        <button class="btn" type="button">Проверить модель</button>
+    </div>
+    <div class="container">
+      <h1>Ваш UUID: </h1>
+      <p>{{ value }}</p>
+    </div>
+</body>
 {% endblock %}

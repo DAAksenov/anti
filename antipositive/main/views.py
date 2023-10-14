@@ -1,8 +1,9 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponseRedirect
 
 def home(request):
-    return render(request, 'home.html')
+    #data = MyModel.objects.get(id=1)
+    return render(request, 'home.html')#, {'value': data.value})
 
 
 from django.contrib.auth import login, authenticate
@@ -60,3 +61,6 @@ def change_password(request):
 
 def password_change_done(request):
     return render(request, 'change-password/password_change_done.html')
+
+def upload(request):
+    return HttpResponseRedirect("/download/upload/")
