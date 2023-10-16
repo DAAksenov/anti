@@ -1,9 +1,13 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
+from download.models import *
 
 def home(request):
-    #data = MyModel.objects.get(id=1)
-    return render(request, 'home.html')#, {'value': data.value})
+    try:
+        data = PKL.objects.latest('id').pkl[:-4]
+    except PKL.DoesNotExist:
+        data = '1'
+    return render(request, 'home.html', {'value': data})
 
 
 from django.contrib.auth import login, authenticate

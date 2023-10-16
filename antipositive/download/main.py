@@ -131,15 +131,17 @@ def predict(filename_model: str, filename_data: str, file_name_real: str) -> tup
 
 def fit(file_name: str) -> str:
     try:
+        print("Я")
         data = np.genfromtxt(file_name, delimiter=';')
         x_train, y_train = data[:, :3], data[:, 4]
     except:
+        print("Долбаеб")
         return 'Error'
     model = GradientBoostingRegressorFromScratch()
     model.fit(x_train, y_train)
     unique_filename = str(uuid.uuid4()) + '.pkl'
     try:
-        with open(unique_filename, 'wb') as f:
+        with open(f"media/{unique_filename}", 'wb') as f:
             pickle.dump(model, f)
     except:
         return 'Error'
@@ -147,7 +149,7 @@ def fit(file_name: str) -> str:
         return unique_filename
 
 
-model_name = fit('train.csv')
-y_real, y_pred = predict(model_name, 'test.csv', 'train.csv')
-
-print(y_real, y_pred)
+# model_name = fit('train.csv')
+# y_real, y_pred = predict(model_name, 'test.csv', 'train.csv')
+#
+# print(y_real, y_pred)
