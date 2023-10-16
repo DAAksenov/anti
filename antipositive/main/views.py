@@ -68,3 +68,6 @@ def password_change_done(request):
 
 def upload(request):
     return HttpResponseRedirect("/download/upload/")
+
+def load(request):
+    return HttpResponseRedirect("/test/load/")
