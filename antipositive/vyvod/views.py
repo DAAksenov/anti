@@ -11,9 +11,11 @@ import pandas as pd
 import numpy as np
 import json
 from django.core.paginator import Paginator
+from vyvod.forms import StudentForm
 
 def load_file(request):
     if request.method == 'POST':
+        student = StudentForm()
         uploaded_file = request.FILES['file']
         fs = FileSystemStorage()
         fs.save(uploaded_file.name, uploaded_file)
@@ -23,7 +25,7 @@ def load_file(request):
         rounded_array = round_array(y_pred)
         array2 = convert_array2(rounded_array)
         Data(array1=array1, array2=array2).save()
-        return redirect("/test/res")
+        return redirect("/test/res", {'form': student})
     return render(request, 'load.html')
 
 

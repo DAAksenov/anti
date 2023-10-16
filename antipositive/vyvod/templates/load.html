@@ -5,6 +5,7 @@
 {% block content %}
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
+        <p><input type="text" name="userName" placeholder="Введите ваш uuid" size="18" /></p>
         <input type="file" name="file">
         <input type="submit" value="Upload">
     </form>
