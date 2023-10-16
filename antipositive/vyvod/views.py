@@ -33,7 +33,7 @@ def data_view(request):
     second = json.loads(data.array2)
     df = pd.DataFrame.from_records({'Исходные данные': first, 'Предсказанные данные': second})
     print(df)
-    context = {'df': df}
+
     p = Paginator(df, 10)
     page_number = request.GET.get('page')
     try:
@@ -41,5 +41,6 @@ def data_view(request):
     except PageNotAnInteger:
         page_obj = p.page(1)
     except EmptyPage:
-        page_obj = p.page(p.num_pages)    
-    return render(request, 'data.html', context, {'page_obj': page_obj})
+        page_obj = p.page(p.num_pages)
+    context = {'df': df, 'page_obj': page_obj}
+    return render(request, 'data.html', context)
